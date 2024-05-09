@@ -1,0 +1,26 @@
+# 刮削路径
+path: false
+
+template:
+  kodi:
+    # 模板的地址
+    episode: template\kodi_episode.nfo
+
+default_template: kodi
+
+tmdb:
+  # tmdb 令牌, 从环境变量 (tmdb_auth) 或者此处进行获取
+  authorization:  false
+  evn_auth: tmdb_auth
+  language: "zh-CN"
+  url:
+    thumb_image_url: "https://image.tmdb.org/t/p/original"
+    thumb_person_url: "https://image.tmdb.org/t/p/h632"
+
+
+download_image: true
+default_scraper: "tmdb"
+scraper_all: false
+
+
+

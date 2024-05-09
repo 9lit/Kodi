@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<episodedetails>
+    <title></title>
+    <!-- Required for multi-episode files only
+    <season>1</season>    
+    <episode>2</episode>
+    -->
+    <userrating></userrating>
+    <!--按照正确的剧集或季中，放置特别节目-->
+    <displayepisode>-1</displayepisode>
+    <displayseason>-1</displayseason>
+    <plot></plot>
+    <runtime></runtime>
+    <!--本集剧集的缩略图， 如果本地有则不使用-->
+    <thumb aspect="thumb" preview=""></thumb>
+    <playcount>0</playcount>
+    <!--上次播放时间，格式为 yyyy-mm-dd -->
+    <lastplayed></lastplayed>
+    <!-- 向 type="" 中添加一个值，如 imdb, tmdb, home, sport, docu, 在文本中输入 type 的id，请参照下面的示例，
+    <uniqueid type="tmdb" default="true">
+    <uniqueid type="imdb" default="false">或<uniqueid type="imdb">
+    -->
+    <uniqueid type="" default="true"></uniqueid>  
+    <credits></credits>
+    <director></director>
+    <!--本集的原始首播时间 yyyy-mm-dd -->
+    <aired></aired>       
+    <actor>
+        <name></name>
+        <role></role>
+        <thumb></thumb>
+        <order></order>
+    </actor>
+    
+</episodedetails>
