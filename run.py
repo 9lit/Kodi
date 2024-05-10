@@ -59,7 +59,8 @@ class ScrapeInfo():
                 set.Config.run()
             else:
                 print(Usage.__doc__)
-                exit()
+        
+            exit()
         else:
             pass
 
