@@ -10,7 +10,7 @@ class Tmdb():
         authorization = Config.AUTHORIZATION
         self.language = Config.LANGUAGE
         self.episode_parseinfo = video_info['episode']
-        self.seasons_parseinfo = video_info['season']
+        # self.seasons_parseinfo = video_info['season']
         self.thumb_image_url = Config.THUMB_IMAGE_URL
         self.download_image = Config.DOWNLOAD_IMAGE
         self.pid = Config.TMDB_CACHE
@@ -38,8 +38,8 @@ class Tmdb():
 
 
         # 刮削数据
-        if self.seasons_parseinfo and False:
-            self.seasons(seasons_parseinfo)
+        # if self.seasons_parseinfo and False:
+        #     self.seasons(seasons_parseinfo)
 
         if self.episode_parseinfo:
             self.episodes()

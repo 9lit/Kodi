@@ -9,46 +9,54 @@ config_path = os.path.join(home_dir, "config_perform.yml")
 
 class Config:
 
-    config = read_file.yaml(config_path)
-    if not config:
+    _config = read_file.yaml(config_path)
+    if not _config:
         print(f"没有获取到配置文件,请重新设置, 请运行默认命令 python run.py config init")
         exit()
     
     HOME = home_dir
-    PLAYER_NAME = config['default_template']
-    SCRAPER_NAME = config['default_scraper']
+    PLAYER_NAME = _config['default_template']
+    SCRAPER_NAME = _config['default_scraper']
 
     # 播放器的配置文件     
-    template_player = config['template'][PLAYER_NAME]
-    # 将模板路径转换为当前系统的路径
-    template_player_episode = template_player['episode'].replace("\\", "/").split("/")
-    template_player_episode = os.path.join(*template_player_episode)
-    TEMPLATE_EPISODE =  os.path.join(home_dir, template_player_episode)
-    print(home_dir)
+    _template_player = _config['template'][PLAYER_NAME]
+    ## 将模板路径转换为当前系统的路径
+    _template_player_episode = _template_player['episode'].replace("\\", "/").split("/")
+    _template_player_episode = os.path.join(*_template_player_episode)
+    TEMPLATE_EPISODE =  os.path.join(home_dir, _template_player_episode)
 
     # 刮削器的配置
-    scraper_config = config[SCRAPER_NAME]
-    scraper_url = scraper_config['url']
+    _scraper_config = _config[SCRAPER_NAME]
+    scraper_url = _scraper_config['url']
     # 获取刮削器的令牌
-    auth = os.getenv(scraper_config['evn_auth'])
-    confi_auth = scraper_config['authorization']
-    if auth or confi_auth:
-        AUTHORIZATION = auth if auth else confi_auth
+    _auth = os.getenv(_scraper_config['evn_auth'])
+    _confi_auth = _scraper_config['authorization']
+    if _auth or _confi_auth:
+        AUTHORIZATION = _auth if _auth else _confi_auth
     else:
         print("获取 令牌失败,请检查令牌")
         exit()
 
-    LANGUAGE = scraper_config['language']
+    LANGUAGE = _scraper_config['language']
     THUMB_IMAGE_URL = scraper_url['thumb_image_url']
     THUMB_PERSON_URL = scraper_url['thumb_person_url']
 
     # 刮削路径
-    PATH = config['path']
+    PATH = _config['path']
     
     # 是否刮削全部
-    SCRAPER_ALL = config['scraper_all']
+    SCRAPER_ALL = _config['scraper_all']
 
     # 是否刮削图片
-    DOWNLOAD_IMAGE = config["download_image"]
+    DOWNLOAD_IMAGE = _config["download_image"]
 
     TMDB_CACHE = os.path.join(HOME, "tmdb")
+
+    _info = f"""
+项目目录: {HOME},
+配置文件位置: {config_path},
+刮削路径: {PATH},
+是否刮削全部: {SCRAPER_ALL},
+是否刮削图片: {DOWNLOAD_IMAGE},
+"""
+    print(_info)

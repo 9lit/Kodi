@@ -6,7 +6,7 @@ class Kodi():
     def __init__(self, metadata_list) -> None:
         self.template_episode = Config.TEMPLATE_EPISODE
         self.metadata_tv = metadata_list['tv']
-        self.metadata_season = metadata_list['season']
+        # self.metadata_season = metadata_list['season']
         self.metadata_episode:dict = metadata_list['episode']
         self.thumb_image_url = Config.THUMB_IMAGE_URL
         self.thumb_person_url = Config.THUMB_PERSON_URL
@@ -116,7 +116,3 @@ class Kodi():
                     print("成功: %s" % jpg_outpath)
                 else:
                     print("失败: %s" % jpg_outpath)
-
-
-
-    

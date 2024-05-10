@@ -106,8 +106,8 @@ class File():
             lack_episodeinfo = episode()
 
             metadata = {
-                "tv": tv(),
-                "season": season(),
+                # "tv": tv(),
+                # "season": season(),
                 "episode": lack_episodeinfo,
             }
             

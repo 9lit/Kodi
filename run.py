@@ -33,6 +33,11 @@ class ScrapeInfo():
     def scraper(self):
         
         self.matedata = modular.scraper.main.run(self.info)
+        if self.matedata:
+            pass
+        else:
+            print("没有搜索数据, 请检查文件或者刮削api")
+            exit()
 
     def player(self):
         modular.player.main.run(self.matedata)
@@ -41,6 +46,11 @@ class ScrapeInfo():
     def file(self):
 
         self.info = File().run()
+        if self.info['episode']:
+            print(self.info)
+        else:
+            print("没有需要刮削的文件")
+            exit()
 
     def config(self):
         
@@ -55,23 +65,13 @@ class ScrapeInfo():
 
 
     def run(self):
-        self.file()
         self.config()
-        # if not self.info:
-        #     print(f"[INFO]{self.path}, 此路径下没有需要刮削的文件")
-        # else:
-        #     print(json.dumps(self.info, ensure_ascii=False, sort_keys=True, indent=2, separators=(",", ":")))
-        self.scraper()
-        # if not self.matedata:
-        #     print(f"{self.scraper_name}.[INFO] 没有可供刮削的数据")
-        #     exit()
-        # else:
-        #     for name in self.matedata['episode']:
-        #         print(name)
-                
+        self.file()
+        self.scraper()           
         self.player()
-            
-s = ScrapeInfo().run()
+
+if __name__ == "__main__":
+    s = ScrapeInfo().run()
             
                 
         
