@@ -53,8 +53,10 @@ class ScrapeInfo():
         
         if self.len_argv > 1 and self.argv[1] == "config":
             if self.len_argv == 3:
-                set.Config.run()
-                print("配置文件设置成功")
+                if not set.Config.run():
+                    print(Usage.__doc__)
+                else:
+                    print("配置文件设置成功")
             else:
                 print(Usage.__doc__)
         
