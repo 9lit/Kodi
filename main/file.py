@@ -115,4 +115,3 @@ class File():
 
 
         self.matedata = run()
-    

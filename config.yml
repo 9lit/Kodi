@@ -1,10 +1,10 @@
 # 刮削路径
-path: false
+path: /webdav/onedrive/video/Donghua/Auto
 
 template:
   kodi:
     # 模板的地址
-    episode: template\kodi_episode.nfo
+    episode: template/kodi_episode.nfo
 
 default_template: kodi
 

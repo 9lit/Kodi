@@ -22,6 +22,7 @@ class Config:
     # 刮削器的配置
     scraper_config = config[SCRAPER_NAME]
     scraper_url = scraper_config['url']
+    # 获取刮削器的令牌
     auth = os.getenv(scraper_config['evn_auth'])
     confi_auth = scraper_config['authorization']
     if auth or confi_auth:
@@ -35,12 +36,7 @@ class Config:
     THUMB_PERSON_URL = scraper_url['thumb_person_url']
 
     # 刮削路径
-    path = config['path'].replace("\\", "/").split("/")
-
-    path = os.path.join(*path)
-    PATH = path.replace("C:", "C:\\") if "C:\\" not in path else path
-
-    print(PATH)
+    PATH = config['path']
     
     # 是否刮削全部
     SCRAPER_ALL = config['scraper_all']
@@ -48,4 +44,4 @@ class Config:
     # 是否刮削图片
     DOWNLOAD_IMAGE = config["download_image"]
 
-    TMDB_CACHE = os.path.join(HOME, "tmp", "kodi")
+    TMDB_CACHE = os.path.join(HOME, "tmp", "tmdb")
