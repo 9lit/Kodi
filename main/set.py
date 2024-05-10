@@ -12,7 +12,9 @@ class Config:
             source = os.path.join(home_dir, 'modular', "config.yml")
             target = os.path.join(home_dir, "config_perform.yml")
 
-            subprocess.run("cp '%s' '%s'" % (source, target))
+            subprocess.run(["cp", source, target])
+
+            return True
 
         else:
             return False
