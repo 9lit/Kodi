@@ -65,6 +65,7 @@ class Config():
         if len(sys.argv) > 1 and sys.argv[2] == "init": 
 
             home_dir = os.path.dirname(__file__)
+            home_dir, basename = home_dir.split(home_dir)
 
             source = os.path.join(home_dir, 'modular', "config.yml")
             target = os.path.join(home_dir, "config_perform.yml")

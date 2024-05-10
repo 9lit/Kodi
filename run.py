@@ -1,9 +1,5 @@
 import sys
-
-from main.file import File
 from main import set
-import modular.player.main
-import modular.scraper.main
 
 # import json
 
@@ -31,7 +27,7 @@ class ScrapeInfo():
         self.len_argv = len(self.argv)
 
     def scraper(self):
-        
+        import modular.scraper.main
         self.matedata = modular.scraper.main.run(self.info)
         if self.matedata:
             pass
@@ -40,11 +36,12 @@ class ScrapeInfo():
             exit()
 
     def player(self):
+        import modular.player.main
         modular.player.main.run(self.matedata)
 
 
     def file(self):
-
+        from main.file import File
         self.info = File().run()
         if self.info['episode']:
             print(self.info)
@@ -57,6 +54,7 @@ class ScrapeInfo():
         if self.len_argv > 1 and self.argv[1] == "config":
             if self.len_argv == 3:
                 set.Config.run()
+                print("配置文件设置成功")
             else:
                 print(Usage.__doc__)
         
