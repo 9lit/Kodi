@@ -28,7 +28,7 @@ def _read_yaml(path):
     return text
     
 
-def _read(path, file_type="yaml"):
+def _read(path, file_type="txt"):
 
     try:
         with open(path, 'r', encoding='utf-8') as f:
@@ -54,6 +54,7 @@ class read_file:
 
     json = _read_json
     yaml = _read_yaml
+    txt = _read
 
 
 class write_file:

@@ -1,15 +1,18 @@
 import os
 from main.tools import read_file
 
+# user_home = os.getenv("HOME")
 now_path = os.path.dirname(__file__)
 home_dir, filename = os.path.split(now_path)
 
-path = "config.yml"
-path = os.path.join(home_dir, path)
+config_path = os.path.join(home_dir, "config_perform.yml")
 
 class Config:
 
-    config = read_file.yaml(path)
+    config = read_file.yaml(config_path)
+    if not config:
+        print(f"没有获取到配置文件,请重新设置, 请运行默认命令 python run.py config init")
+        exit()
     
     HOME = home_dir
     PLAYER_NAME = config['default_template']

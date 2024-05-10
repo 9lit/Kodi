@@ -1,56 +1,72 @@
-from main.config import Config
-from scraper.tmdb import Tmdb
-from player.kodi import Kodi
-from main.file import File
+import sys
 
-import json
+from main.file import File
+from main import set 
+import player.main
+import scraper.main
+
+# import json
+
+class Usage:
+    """基于 tmdb 和 kodi 的视频自动刮削脚本.
+
+用法: 
+python run.py 执行自动刮削脚本
+python run.py config [参数] 编辑配置文件
+
+参数:
+config:
+  set 设置配置文件位置, 修改 config.py 中的 config_perform.yml 位置
+  init 初始化配置文件, 复制 config.yml 文件 并重新命名为 config_perform.yml
+  reset 重置配置文件, 复制 config.yaml 文件,并重命名, 且修改配置 config.py 中 config_perform.yml 位置
+"""
+    pass
 
 class ScrapeInfo():
 
     def __init__(self) -> None:
-
-        self.player_name = Config.PLAYER_NAME
-        self.scraper_name = Config.SCRAPER_NAME
-
-        self.path = Config.PATH
-        self.template_episode = Config.TEMPLATE_EPISODE
-        self.scraper_all = Config.SCRAPER_ALL
+        self.matedata = None
+        self.info = None
+        self.argv = sys.argv
+        self.len_argv = len(self.argv)
 
     def scraper(self):
-        
-        run = {
-            "tmdb" : Tmdb
-        }
-        self.matedata = run[self.scraper_name](video_info=self.info).run()
+        self.matedata = scraper.main.run(self.info)
 
     def player(self):
-        
-        run = {
-            "kodi": Kodi
-        }
-
-        run[self.player_name](self.matedata).run()
+        player.main.run(self.matedata)
 
 
     def file(self):
 
         self.info = File().run()
 
+    def config(self):
+        
+        if self.len_argv > 1 and self.argv[1] == "config":
+            if self.len_argv == 3:
+                set.Config.run()
+            else:
+                print(Usage.__doc__)
+                exit()
+        else:
+            pass
+
 
     def run(self):
-        
         self.file()
-        if not self.info:
-            print(f"[INFO]{self.path}, 此路径下没有需要刮削的文件")
-        else:
-            print(json.dumps(self.info, ensure_ascii=False, sort_keys=True, indent=2, separators=(",", ":")))
+        self.config()
+        # if not self.info:
+        #     print(f"[INFO]{self.path}, 此路径下没有需要刮削的文件")
+        # else:
+        #     print(json.dumps(self.info, ensure_ascii=False, sort_keys=True, indent=2, separators=(",", ":")))
         self.scraper()
-        if not self.matedata:
-            print(f"{self.scraper_name}.[INFO] 没有可供刮削的数据")
-            exit()
-        else:
-            for name in self.matedata['episode']:
-                print(name)
+        # if not self.matedata:
+        #     print(f"{self.scraper_name}.[INFO] 没有可供刮削的数据")
+        #     exit()
+        # else:
+        #     for name in self.matedata['episode']:
+        #         print(name)
                 
         self.player()
             
