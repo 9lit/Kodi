@@ -1,9 +1,9 @@
 import sys
 
 from main.file import File
-from main import set 
-import player.main
-import scraper.main
+from main import set
+import modular.player.main
+import modular.scraper.main
 
 # import json
 
@@ -31,10 +31,11 @@ class ScrapeInfo():
         self.len_argv = len(self.argv)
 
     def scraper(self):
-        self.matedata = scraper.main.run(self.info)
+        
+        self.matedata = modular.scraper.main.run(self.info)
 
     def player(self):
-        player.main.run(self.matedata)
+        modular.player.main.run(self.matedata)
 
 
     def file(self):

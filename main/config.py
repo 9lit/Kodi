@@ -20,7 +20,11 @@ class Config:
 
     # 播放器的配置文件     
     template_player = config['template'][PLAYER_NAME]
-    TEMPLATE_EPISODE =  os.path.join(home_dir, template_player['episode']) 
+    # 将模板路径转换为当前系统的路径
+    template_player_episode = template_player['episode'].replace("\\", "/").split("/")
+    template_player_episode = os.path.join(*template_player_episode)
+    TEMPLATE_EPISODE =  os.path.join(home_dir, template_player_episode)
+    print(home_dir)
 
     # 刮削器的配置
     scraper_config = config[SCRAPER_NAME]
@@ -47,4 +51,4 @@ class Config:
     # 是否刮削图片
     DOWNLOAD_IMAGE = config["download_image"]
 
-    TMDB_CACHE = os.path.join(HOME, "tmp", "tmdb")
+    TMDB_CACHE = os.path.join(HOME, "tmdb")

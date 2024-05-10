@@ -4,7 +4,7 @@ path: your_path
 template:
   kodi:
     # 模板的地址
-    episode: template/kodi_episode.nfo
+    episode: main/template/kodi_episode.nfo
 
 default_template: kodi
 

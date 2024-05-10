@@ -1,4 +1,4 @@
-from scraper import tmdb
+from modular.scraper import tmdb
 from main.config import Config
 
 

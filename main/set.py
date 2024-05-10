@@ -66,7 +66,7 @@ class Config():
 
             home_dir = os.path.dirname(__file__)
 
-            source = os.path.join(home_dir, "config.yml")
+            source = os.path.join(home_dir, 'modular', "config.yml")
             target = os.path.join(home_dir, "config_perform.yml")
 
             subprocess.run("cp '%s' '%s'" % (source, target))

@@ -1,4 +1,4 @@
-from player import kodi
+from modular.player import kodi
 from main.config import Config
 
 
